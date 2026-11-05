@@ -1,0 +1,2 @@
+/* @license GPL-2.0-or-later https://www.drupal.org/licensing/faq */
+(n=>{Drupal.behaviors.Fancybox={attach:function(){n("a.fancybox:not([data-fancybox])").each(function(a){n(this).attr("data-fancybox","gallery-a-"+a)}),n(".layout-gallery, .fancybox-gallery").each(function(a){n(this).find(".fancybox").attr("data-fancybox","gallery-"+a)}),Fancybox.bind("[data-fancybox]",{infinite:!0,buttons:["zoom","close","slideShow","fullScreen"],animated:!0,animationEffect:"zoom-in-out",animationDuration:400,closeButton:!0})}}})(jQuery);;

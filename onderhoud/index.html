@@ -1,0 +1,1129 @@
+
+<!DOCTYPE html>
+<html lang="nl" dir="ltr" prefix="og: https://ogp.me/ns#">
+	<head><meta name="robots" content="noindex, nofollow, noarchive">
+				<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag() {
+		dataLayer.push(arguments);
+	}
+
+	gtag("consent", "default", {
+		ad_storage: "denied",
+		ad_user_data: "denied",
+		ad_personalization: "denied",
+		analytics_storage: "denied",
+		functionality_storage: "denied",
+		personalization_storage: "denied",
+		security_storage: "granted",
+		wait_for_update: 2000,
+	});
+
+	gtag("set", "ads_data_redaction", true);
+</script>
+
+<script>
+	(function (w, d, s, l, i) {
+		w[l] = w[l] || [];
+		w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+		var f = d.getElementsByTagName(s)[0],
+			j = d.createElement(s),
+			dl = l != "dataLayer" ? "&l=" + l : "";
+		j.async = true;
+		j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+		f.parentNode.insertBefore(j, f);
+	})(window, document, "script", "dataLayer", "GTM-000000");
+</script>
+<script>
+	//update consent mode if already given
+	if (localStorage.getItem("consentMode") != null) {
+		updateConsentMode(JSON.parse(localStorage.getItem("consentMode")));
+	}
+
+	document.addEventListener("click", function (event) {
+		// Check if the clicked element has the class 'eu-cookie-compliance-agree-button'
+		if (
+			event.target.classList.contains("eu-cookie-compliance-agree-button")
+		) {
+			var consentMode = {
+				ad_storage: "granted",
+				ad_user_data: "granted",
+				ad_personalization: "granted",
+				analytics_storage: "granted",
+				functionality_storage: "granted",
+				personalization_storage: "granted",
+				security_storage: "granted",
+			};
+
+			updateConsentMode(consentMode);
+		}
+
+		// Check if the clicked element has the class 'eu-cookie-compliance-disagree-button'
+		if (
+			event.target.classList.contains("eu-cookie-compliance-disagree-button")
+		) {
+			var consentMode = {
+				ad_storage: "denied",
+				ad_user_data: "denied",
+				ad_personalization: "denied",
+				analytics_storage: "denied",
+				functionality_storage: "denied",
+				personalization_storage: "denied",
+				security_storage: "granted",
+			};
+
+			updateConsentMode(consentMode);
+
+			// Uncheck manually because not correctly done by module
+			var categoryCheckboxes = document.querySelectorAll(
+				'.eu-cookie-compliance-category input[type="checkbox"]'
+			);
+			categoryCheckboxes.forEach(function (checkbox) {
+				checkbox.checked = false;
+			});
+		}
+
+		// Check if the clicked element has the class 'eu-cookie-compliance-save-preferences-button'
+		if (
+			event.target.classList.contains(
+				"eu-cookie-compliance-save-preferences-button"
+			)
+		) {
+			var acceptedCookies = [];
+			var checkboxElements = document.querySelectorAll(
+				".eu-cookie-compliance-category .form-type__checkbox > .form-checkbox:checked"
+			);
+
+			checkboxElements.forEach(function (checkbox) {
+				acceptedCookies.push(checkbox.value);
+			});
+
+			var consentMode = {
+				ad_storage: acceptedCookies.includes("marketing_cookies")
+					? "granted"
+					: "denied",
+				ad_user_data: acceptedCookies.includes("marketing_cookies")
+					? "granted"
+					: "denied",
+				ad_personalization: acceptedCookies.includes("marketing_cookies")
+					? "granted"
+					: "denied",
+				analytics_storage: acceptedCookies.includes("analytical_cookies")
+					? "granted"
+					: "denied",
+				functionality_storage: acceptedCookies.includes(
+					"functional_cookies"
+				)
+					? "granted"
+					: "denied",
+				personalization_storage: acceptedCookies.includes(
+					"functional_cookies"
+				)
+					? "granted"
+					: "denied",
+				security_storage: acceptedCookies.includes("necessary_cookies")
+					? "granted"
+					: "denied",
+			};
+
+			updateConsentMode(consentMode);
+		}
+	});
+
+	function updateConsentMode(consentMode) {
+		gtag("consent", "update", consentMode);
+		localStorage.setItem("consentMode", JSON.stringify(consentMode));
+	}
+</script>
+
+		<style id="critical-css">.container{padding:0 clamp(30px,6vw,140px);max-width:1600px;margin:0 auto}.container--large{padding:0 1.5rem}.container--small{max-width:1200px}.site-logo{color:inherit;display:inline-block;text-decoration:none}.site-logo__image{transition:opacity .6s cubic-bezier(.2,.7,.2,1)}.site-logo:focus-visible .site-logo__image,.site-logo:hover .site-logo__image{opacity:.8}.header{background-color:color-mix(in srgb,var(--c-bg-dark) 96%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid color-mix(in srgb,var(--c-bone) 14%,transparent);color:var(--c-bone);left:0;position:fixed;right:0;top:0;transition:top .25s ease-in-out,transform .6s cubic-bezier(.2,.7,.2,1),box-shadow .6s cubic-bezier(.2,.7,.2,1);z-index:99}.header a:not([class*=button]){color:var(--c-bone)}.header a:not([class*=button]):focus-visible,.header a:not([class*=button]):hover{color:var(--c-primary)}.header__top{border-bottom:1px solid color-mix(in srgb,var(--c-bone) 14%,transparent);color:color-mix(in srgb,var(--c-bone) 66%,transparent);font-size:.8125rem;padding:.5rem 0;position:relative;z-index:99}@media (max-width:991px){.header__top{display:none}}.header__top>.container{align-items:center;display:flex;gap:1.5rem;justify-content:space-between}.header__top p{color:inherit;margin:0}.header__top i{color:var(--c-primary);margin-right:.4rem}.header__top a{color:color-mix(in srgb,var(--c-bone) 66%,transparent)}.header__top__contact{display:flex;gap:1.5rem;list-style:none}.header__top__contact a{text-decoration:none}.header__bottom{align-items:center;display:flex;gap:1.5rem;justify-content:space-between;width:100%}@media only screen and (min-width:1201px){.header__navigation{align-self:stretch;display:flex}}.header__navigation .hamburger{display:none}.header__navigation__menu{align-items:center;display:flex;flex-direction:column}@media (min-width:1201px){.header__navigation__menu{justify-content:center;padding:0!important}}.header__navigation__menu--contact{display:none}@media (max-width:1200px){.header__navigation .hamburger{display:block;margin-left:auto;position:relative;z-index:100}.header__navigation__menu{align-items:flex-start;background:radial-gradient(ellipse 50% 80% at 50% 100%,color-mix(in srgb,var(--c-secondary) 35%,transparent) 0,transparent 70%),var(--c-bg-dark);border-left:1px solid color-mix(in srgb,var(--c-bone) 14%,transparent);bottom:0;justify-content:flex-start;max-width:440px;overflow-y:auto;padding-bottom:1.5rem;padding-top:5.5rem;position:fixed;right:0;top:0;transform:translateX(100%);visibility:hidden;width:100%;z-index:1}.header__navigation__menu.smooth{transition:transform .7s cubic-bezier(.2,.7,.2,1),visibility .7s}.header__navigation__menu.active{box-shadow:-30px 0 60px color-mix(in srgb,var(--c-black) 45%,transparent);transform:translateX(0);visibility:visible}.header__navigation__menu--main{width:100%}.header__navigation__menu--contact{border-top:1px solid color-mix(in srgb,var(--c-bone) 14%,transparent);color:color-mix(in srgb,var(--c-bone) 66%,transparent);display:block;font-size:.9375rem;margin-top:1.5rem;padding-top:1.5rem;width:100%}}.header__navigation__menu--contact p{color:inherit;margin:0 0 .5rem}.header__navigation__menu--contact i{color:var(--c-primary);margin-right:.5rem}.header__navigation__menu--contact a{text-decoration:none}.header__logo{flex:0 0 auto;padding:1.5rem 0;position:relative;transition:padding .6s cubic-bezier(.2,.7,.2,1);z-index:99}@media (max-width:1200px){.header__logo{padding:1.125rem 0}}.header .hamburger-inner,.header .hamburger-inner::after,.header .hamburger-inner::before,.header .hamburger.is-active .hamburger-inner,.header .hamburger.is-active .hamburger-inner::after,.header .hamburger.is-active .hamburger-inner::before{background-color:var(--c-bone)}.header.scrolled{box-shadow:0 10px 40px color-mix(in srgb,var(--c-black) 30%,transparent)}.header.scrolled .header__logo{padding:1rem 0}@media (min-width:992px){.header.scrolled.scroll-direction-down{transform:translateY(calc(-1 * var(--header-top-height,36px)))}}*{scroll-margin-top:200px}.hidden,.hidden--lg,.hidden--md,.hidden--sm,.hide,.hide--lg,.hide--md,.hide--sm{display:none!important}@media (min-width:480px){.hidden--sm,.hide--sm{display:unset!important}}@media (min-width:768px){.hidden--md,.hide--md{display:unset!important}}@media (min-width:1024px){.hidden--lg,.hide--lg{display:unset!important}}.noscroll{overflow:hidden}.space-top-none{padding-top:0}.space-top-sm{padding-top:clamp(30px,6vw - 2rem,60px)}.space-top-md{padding-top:clamp(30px,6vw,100px)}.space-top-lg{padding-top:clamp(30px,6vw + 2rem,140px)}.space-bottom-none{padding-bottom:0}.space-bottom-sm{padding-bottom:clamp(30px,6vw - 2rem,60px)}.space-bottom-md{padding-bottom:clamp(30px,6vw,100px)}.space-bottom-lg{padding-bottom:clamp(30px,6vw + 2rem,140px)}.bg--default{background-color:var(--c-bg-light)}.bg--highlight{background-color:var(--c-bg)}.bg--dark{background:var(--c-bg-dark);color:var(--c-bone)}.bg--dark+.bg--dark{border-top:1px solid color-mix(in srgb,var(--c-bone) 14%,transparent)}.bg--default+.bg--default,.bg--highlight+.bg--highlight{border-top:1px solid color-mix(in srgb,var(--c-primary-text) 14%,transparent)}[data-aos][data-aos=fade-up]{transform:translate3d(0,1.5rem,0)}[data-aos][data-aos=fade-down]{transform:translate3d(0,-1.5rem,0)}[data-aos][data-aos=fade-left]{transform:translate3d(1.5rem,0,0)}[data-aos][data-aos=fade-right]{transform:translate3d(-1.5rem,0,0)}main{padding-top:130px}@media (max-width:1400px){main{padding-top:110px}}@media (max-width:992px){main{padding-top:100px}}.skip-to-main-content a:focus-visible{clip:auto;width:auto;height:auto;overflow:visible;position:relative!important}.skip-to-main-content:has(a:focus-visible)~* .header{top:2rem}</style>
+
+		<meta charset="utf-8" />
+<noscript><style>form.antibot > * { display: none !important; } form.antibot noscript { display: block !important; }</style>
+</noscript><style>/* @see https://github.com/aFarkas/lazysizes#broken-image-symbol */.js img.lazyload:not([src]) { visibility: hidden; }/* @see https://github.com/aFarkas/lazysizes#automatically-setting-the-sizes-attribute */.js img.lazyloaded[data-sizes=auto] { display: block; width: 100%; }</style>
+<meta name="description" content="Plaatsing, vernieuwing en herstelling van pool-, snooker- en carambolebiljarts door ESPA Biljarts, met meer dan 35 jaar ervaring." />
+<link rel="canonical" href="https://mant-le.github.io/espa/onderhoud" />
+<link rel="image_src" href="https://mant-le.github.io/espa/sites/hannibal/files/styles/og_image/public/uploads/media/images/media_image/opengraph.png?h=6ab03119&amp;itok=bbKSgwv-" />
+<meta property="og:site_name" content="ESPA Biljarts" />
+<meta property="og:type" content="Basic page" />
+<meta property="og:url" content="https://mant-le.github.io/espa/onderhoud" />
+<meta property="og:title" content="Onderhoud &amp; plaatsing | ESPA Biljarts" />
+<meta property="og:description" content="Plaatsing, vernieuwing en herstelling van pool-, snooker- en carambolebiljarts door ESPA Biljarts, met meer dan 35 jaar ervaring." />
+<meta property="og:image" content="https://mant-le.github.io/espa/sites/hannibal/files/styles/og_image/public/uploads/media/images/media_image/opengraph.png?h=6ab03119&amp;itok=bbKSgwv-" />
+<meta property="og:image:url" content="https://mant-le.github.io/espa/sites/hannibal/files/styles/og_image/public/uploads/media/images/media_image/opengraph.png?h=6ab03119&amp;itok=bbKSgwv-" />
+<meta property="og:image:secure_url" content="https://mant-le.github.io/espa/sites/hannibal/files/styles/og_image/public/uploads/media/images/media_image/opengraph.png?h=6ab03119&amp;itok=bbKSgwv-" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="ESPA Biljarts" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://mant-le.github.io/espa",
+            "url": "https://mant-le.github.io/espa",
+            "sameAs": [
+                "https://www.facebook.com/espabiljarts/"
+            ],
+            "name": "ESPA Biljarts",
+            "description": "Biljartspeciaalzaak sinds 1989 in Roeselare. Uw specialist voor het plaatsen en onderhouden van nieuwe en tweedehandse biljarts, snooker- en pooltafels voor thuis, in de zaak en de horeca.",
+            "telephone": "+32 495 22 22 33",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://mant-le.github.io/espa/themes/custom/hannitheme/logo.png"
+            },
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Kruisboommolenstraat 7/2",
+                "addressLocality": "Roeselare",
+                "postalCode": "8800",
+                "addressCountry": "BE"
+            }
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://mant-le.github.io/espa/onderhoud",
+            "description": "Onderhoud \u0026 plaatsing",
+            "author": {
+                "@id": "https://mant-le.github.io/espa",
+                "name": "ESPA Biljarts",
+                "url": "https://mant-le.github.io/espa",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://mant-le.github.io/espa/themes/custom/hannitheme/logo.png"
+                }
+            }
+        },
+        {
+            "@type": "WebSite",
+            "@id": "https://mant-le.github.io/espa",
+            "name": "ESPA Biljarts",
+            "url": "https://mant-le.github.io/espa",
+            "publisher": {
+                "@type": "Organization",
+                "@id": "https://mant-le.github.io/espa"
+            }
+        }
+    ]
+}</script>
+<link rel="alternate" hreflang="x-default" href="https://mant-le.github.io/espa/onderhoud" />
+<link rel="icon" href="/espa/core/misc/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="nl" href="https://mant-le.github.io/espa/onderhoud" />
+
+		<title>Onderhoud &amp; plaatsing | ESPA Biljarts</title>
+		<link rel="stylesheet" media="all" href="/espa/sites/hannibal/files/css/css_RbZcfzqjhxGXODsRmxsEEkxKZyo_8tqQNcyYqUuFyNo.css?delta=0&amp;language=nl&amp;theme=hannitheme&amp;include=eJxtkGGywiAMhC9Uy5GYBWLhSRMmwIy9vfXpaOvwi-TbzQbAH-42CwKpwbeeW1RxjnSibr3ILdF-rCUnsCczgtZBaYpgTg6VzKe6-FpfvNFuRqNqzu1bjbSSeU4c--cC8GYTX0VXtCR8lBM3Fdvo3o40Y5PerG8Y0AU5k24DJZLKAP-mswSyBcvpngWKRVGiDXRFz6eJutX9sdYpOCRerMvib0MDIXjtq3tbPqnVBO0Fef6SuXPpLqcaKUyvgP_fewDbbLj9" />
+<link rel="stylesheet" media="all" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+<link rel="stylesheet" media="all" href="/espa/sites/hannibal/files/css/css_ZE7V3dk_jsmmbYoqfH1bPPMtKG4D7gMDl2mQ9-uSStc.css?delta=2&amp;language=nl&amp;theme=hannitheme&amp;include=eJxtkGGywiAMhC9Uy5GYBWLhSRMmwIy9vfXpaOvwi-TbzQbAH-42CwKpwbeeW1RxjnSibr3ILdF-rCUnsCczgtZBaYpgTg6VzKe6-FpfvNFuRqNqzu1bjbSSeU4c--cC8GYTX0VXtCR8lBM3Fdvo3o40Y5PerG8Y0AU5k24DJZLKAP-mswSyBcvpngWKRVGiDXRFz6eJutX9sdYpOCRerMvib0MDIXjtq3tbPqnVBO0Fef6SuXPpLqcaKUyvgP_fewDbbLj9" />
+<link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+<link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+<link rel="stylesheet" media="all" href="/espa/sites/hannibal/files/css/css_p_ipi7e50a5rGBnyb4uINDCJ8wHIlHt3Ah0mSsgv7ew.css?delta=5&amp;language=nl&amp;theme=hannitheme&amp;include=eJxtkGGywiAMhC9Uy5GYBWLhSRMmwIy9vfXpaOvwi-TbzQbAH-42CwKpwbeeW1RxjnSibr3ILdF-rCUnsCczgtZBaYpgTg6VzKe6-FpfvNFuRqNqzu1bjbSSeU4c--cC8GYTX0VXtCR8lBM3Fdvo3o40Y5PerG8Y0AU5k24DJZLKAP-mswSyBcvpngWKRVGiDXRFz6eJutX9sdYpOCRerMvib0MDIXjtq3tbPqnVBO0Fef6SuXPpLqcaKUyvgP_fewDbbLj9" />
+
+		
+
+		
+	</head>
+
+	<body class="path-node page-type--page">
+
+		<div class="skip-to-main-content container">
+			<a href="#main-content" class="visually-hidden">Skip to main content</a>
+		</div>
+		
+		<!-- Google Tag Manager (noscript) -->
+		<noscript>
+			<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-000000" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+		</noscript>
+		<!-- End Google Tag Manager (noscript) -->
+
+		
+		  <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <div class="wrapper page" id="wrapper">
+	<div id="general_content">
+		
+
+<header  class="region region--header header">
+			<div class="header__top">
+			<div class="container">
+									<p class="header__top__hours">
+						<i class="icon-calendar" aria-hidden="true"></i>
+						<span class="visually-hidden">Openingsuren:</span>
+						Ma 16–19u · Wo &amp; Za 14–18u
+					</p>
+								<ul class="header__top__contact">
+											<li>
+							<a href="tel:+32495222233"><i class="icon-phone" aria-hidden="true"></i>+32 495 22 22 33</a>
+						</li>
+																<li>
+							<a href="mailto:info@espa-biljarts.be"><i class="icon-mail-1" aria-hidden="true"></i>info@espa-biljarts.be</a>
+						</li>
+																<li>
+							<a href="https://www.facebook.com/espabiljarts/" target="_blank" rel="noopener" aria-label="Facebook"><i class="icon-facebook-1" aria-hidden="true"></i></a>
+						</li>
+									</ul>
+			</div>
+		</div>
+		<div class="header__bottom container">
+		<div class="header__logo">
+			
+	<a href="/espa/" rel="home" class="site-logo" aria-label="Espa – Home">
+		<img src="/espa/themes/custom/hannitheme/logo-espa-word.svg" width="143" height="35" alt="" class="site-logo__image">
+	</a>
+
+		</div>
+		<div class="header__navigation">
+			<button class="hamburger hamburger--squeeze js-open-menu" type="button" aria-label="Menu" aria-expanded="false" aria-controls="header-navigation-menu">
+				<span class="hamburger-box">
+					<span class="hamburger-inner"></span>
+				</span>
+			</button>
+			<div class="header__navigation__menu container" id="header-navigation-menu">
+				<div class="header__navigation__menu--main">
+											
+<div id="block-hannitheme-mainnavigation" class="block navigation block--menu block--system block--system-menu-blockmain menu--main">
+	
+	<nav role="navigation" class="navigation navbar-nav">
+					
+
+
+							<ul data-region="header" class="menu" data-level="0">
+		
+								<li class="menu-item dropdown">
+				<div class="menu-item-header">
+					
+					<a href="/espa/te-koop" data-drupal-link-system-path="node/114">Aanbod</a>
+
+											<button class="js-toggle-dropdown" aria-label="Submenu Aanbod openen" aria-expanded="false">
+							<i class="icon-down"></i>
+						</button>
+									</div>
+
+							
+
+									<div class="custom-menu">
+						
+													<ul class="menu" data-level="1">
+		
+								<li class="menu-item">
+				<div class="menu-item-header">
+					
+					<a href="/espa/pooltafels" data-drupal-link-system-path="node/115">Pooltafels</a>
+
+									</div>
+
+							
+
+							</li>
+								<li class="menu-item">
+				<div class="menu-item-header">
+					
+					<a href="/espa/snookertafels" data-drupal-link-system-path="node/116">Snookertafels</a>
+
+									</div>
+
+							
+
+							</li>
+								<li class="menu-item">
+				<div class="menu-item-header">
+					
+					<a href="/espa/biljart-eettafels" data-drupal-link-system-path="node/117">Biljart-eettafels</a>
+
+									</div>
+
+							
+
+							</li>
+								<li class="menu-item">
+				<div class="menu-item-header">
+					
+					<a href="/espa/carom-golfbiljart" data-drupal-link-system-path="node/118">Carom &amp; golfbiljart</a>
+
+									</div>
+
+							
+
+							</li>
+								<li class="menu-item">
+				<div class="menu-item-header">
+					
+					<a href="/espa/tafelvoetbal-kickers" data-drupal-link-system-path="node/119">Tafelvoetbal</a>
+
+									</div>
+
+							
+
+							</li>
+								<li class="menu-item">
+				<div class="menu-item-header">
+					
+					<a href="/espa/airhockey" data-drupal-link-system-path="node/120">Airhockey</a>
+
+									</div>
+
+							
+
+							</li>
+								<li class="menu-item">
+				<div class="menu-item-header">
+					
+					<a href="/espa/producten" data-drupal-link-system-path="node/121">Alle modellen</a>
+
+									</div>
+
+							
+
+							</li>
+				</ul>
+	
+					</div>
+							</li>
+								<li class="menu-item">
+				<div class="menu-item-header">
+					
+					<a href="/espa/tweedehands" data-drupal-link-system-path="node/122">Tweedehands</a>
+
+									</div>
+
+							
+
+							</li>
+								<li class="menu-item menu-item--active-trail dropdown">
+				<div class="menu-item-header">
+					
+					<a href="/espa/biljartkeus" data-drupal-link-system-path="node/123">Keus &amp; toebehoren</a>
+
+											<button class="js-toggle-dropdown" aria-label="Submenu Keus &amp; toebehoren openen" aria-expanded="false">
+							<i class="icon-down"></i>
+						</button>
+									</div>
+
+							
+
+									<div class="custom-menu">
+						
+													<ul class="menu" data-level="1">
+		
+								<li class="menu-item">
+				<div class="menu-item-header">
+					
+					<a href="/espa/biljartkeus" data-drupal-link-system-path="node/123">Biljartkeus</a>
+
+									</div>
+
+							
+
+							</li>
+								<li class="menu-item menu-item--active-trail">
+				<div class="menu-item-header">
+					
+					<a href="/espa/toebehoren" data-drupal-link-system-path="node/124">Toebehoren</a>
+
+									</div>
+
+							
+
+							</li>
+				</ul>
+	
+					</div>
+							</li>
+								<li class="menu-item dropdown">
+				<div class="menu-item-header">
+					
+					<a href="/espa/onderhoud" data-drupal-link-system-path="node/125" class="is-active" aria-current="page">Diensten</a>
+
+											<button class="js-toggle-dropdown" aria-label="Submenu Diensten openen" aria-expanded="false">
+							<i class="icon-down"></i>
+						</button>
+									</div>
+
+							
+
+									<div class="custom-menu">
+						
+													<ul class="menu" data-level="1">
+		
+								<li class="menu-item">
+				<div class="menu-item-header">
+					
+					<a href="/espa/onderhoud" data-drupal-link-system-path="node/125" class="is-active" aria-current="page">Onderhoud &amp; plaatsing</a>
+
+									</div>
+
+							
+
+							</li>
+								<li class="menu-item">
+				<div class="menu-item-header">
+					
+					<a href="/espa/te-huur" data-drupal-link-system-path="node/126">Verhuur</a>
+
+									</div>
+
+							
+
+							</li>
+				</ul>
+	
+					</div>
+							</li>
+								<li class="menu-item dropdown">
+				<div class="menu-item-header">
+					
+					<a href="/espa/over-ons" data-drupal-link-system-path="node/127">Over ESPA</a>
+
+											<button class="js-toggle-dropdown" aria-label="Submenu Over ESPA openen" aria-expanded="false">
+							<i class="icon-down"></i>
+						</button>
+									</div>
+
+							
+
+									<div class="custom-menu">
+						
+													<ul class="menu" data-level="1">
+		
+								<li class="menu-item">
+				<div class="menu-item-header">
+					
+					<a href="/espa/over-ons" data-drupal-link-system-path="node/127">Over ons</a>
+
+									</div>
+
+							
+
+							</li>
+								<li class="menu-item">
+				<div class="menu-item-header">
+					
+					<a href="/espa/referenties" data-drupal-link-system-path="node/128">Referenties</a>
+
+									</div>
+
+							
+
+							</li>
+								<li class="menu-item">
+				<div class="menu-item-header">
+					
+					<a href="/espa/gastenboek" data-drupal-link-system-path="node/129">Gastenboek</a>
+
+									</div>
+
+							
+
+							</li>
+								<li class="menu-item">
+				<div class="menu-item-header">
+					
+					<a href="/espa/veelgestelde-vragen" data-drupal-link-system-path="node/145">Veelgestelde vragen</a>
+
+									</div>
+
+							
+
+							</li>
+				</ul>
+	
+					</div>
+							</li>
+								<li class="menu-item">
+				<div class="menu-item-header">
+					
+					<a href="/espa/contact" class="button--primary" data-drupal-link-system-path="node/16">Contact</a>
+
+									</div>
+
+							
+
+							</li>
+				</ul>
+	
+
+
+			</nav>
+	
+</div>
+
+									</div>
+									<div class="header__navigation__menu--contact">
+													<p><i class="icon-calendar" aria-hidden="true"></i>Ma 16–19u · Wo &amp; Za 14–18u</p>
+																			<p><a href="tel:+32495222233"><i class="icon-phone" aria-hidden="true"></i>+32 495 22 22 33</a></p>
+											</div>
+							</div>
+		</div>
+	</div>
+</header>
+
+
+		<main id="main-content">
+						  <div id="region--content" class="region region--content">
+    
+<div id="block-hannitheme-breadcrumb" class="block block--system block--system-breadcrumb-block">
+	
+	  <nav class="breadcrumb" role="navigation" aria-labelledby="system-breadcrumb">
+    <div class="container">
+      <span class="visually-hidden">You are here:</span>
+      <ul>
+                  <li>
+                          <a href="/espa/">Home</a>
+                      </li>
+                  <li>
+                          Onderhoud &amp; plaatsing
+                      </li>
+              </ul>
+    </div>
+  </nav>
+
+	
+</div>
+
+<div id="block-hannitheme-mainpagecontent" class="block block--system block--system-main-block">
+	
+	
+<div  class="node node--page node--type--page node__full node--page__full">    
+    
+    
+
+<div class="field field--entity-reference-revisions field-pg-layout">
+			
+	<div class="paragraph-id--726 paragraph bg--dark paragraph--layout-hero paragraph--default paragraph-layout_hero--default layout-hero negative" id="">
+		<div class="container">
+			<div class="layout-hero__row space-top-lg space-bottom-lg">
+				<div class="layout-hero__content wysiwyg" data-aos="fade-up">
+					<div class="layout-hero__heading">
+													<span class="layout-hero__subtitle subtitle">Onderhoud &amp; plaatsing</span>
+						
+																					<h1 class="layout-hero__title">        <span>Meer dan 35 jaar ervaring in plaatsen en herstellen</span>
+  </h1>
+																		</div>
+
+											<div class="layout-hero__text">
+										<p>Het belangrijkste bij de aankoop van een biljart is de plaatsing.</p>
+
+	
+						</div>
+					
+									</div>
+
+									<div class="layout-hero__images" data-aos="fade" data-aos-delay="150">
+						
+<div class="field swiper field-pg-media-unlimited field--entity-reference">
+	<div class="field__items">
+					<div class="field__item">
+				    <picture>
+                  <source srcset="/espa/sites/hannibal/files/styles/2200x1400/public/espa/snookegooikr-038.jpg.avif?itok=4E_pVfRz 1x, /espa/sites/hannibal/files/styles/4000x2500/public/espa/snookegooikr-038.jpg.avif?itok=q0C38PIE 2x" media="all and (min-width: 1600px)" type="image/avif" width="2200" height="1400"/>
+              <source srcset="/espa/sites/hannibal/files/styles/1600x1000/public/espa/snookegooikr-038.jpg.avif?itok=YvOPl75E 1x, /espa/sites/hannibal/files/styles/3200x2000/public/espa/snookegooikr-038.jpg.avif?itok=8OiwHwPy 2x" media="all and (min-width: 1200px) and (max-width: 1599px)" type="image/avif" width="1600" height="1000"/>
+              <source srcset="/espa/sites/hannibal/files/styles/1200x800/public/espa/snookegooikr-038.jpg.avif?itok=3_wP2him 1x, /espa/sites/hannibal/files/styles/2400x1600/public/espa/snookegooikr-038.jpg.avif?itok=o0zqr2LZ 2x" media="all and (min-width: 768px) and (max-width: 1199px)" type="image/avif" width="1200" height="800"/>
+              <source srcset="/espa/sites/hannibal/files/styles/768x568/public/espa/snookegooikr-038.jpg.avif?itok=e_7KW_1_ 1x, /espa/sites/hannibal/files/styles/1600x1200/public/espa/snookegooikr-038.jpg.avif?itok=TQujpIxG 2x" media="all and (max-width: 767px)" type="image/avif" width="768" height="568"/>
+                  <img loading="lazy" width="4000" height="2500" src="/espa/sites/hannibal/files/styles/4000x2500/public/espa/snookegooikr-038.jpg.avif?itok=q0C38PIE" alt="36 jaar ervaring in plaatsen en herstellen van pool- en snookertafels" />
+
+  </picture>
+
+
+			</div>
+			</div>
+</div>
+
+					</div>
+							</div>
+		</div>
+
+		
+
+	</div>
+
+			
+	<section class="paragraph-id--727 paragraph space-top-md space-bottom-md bg--default paragraph--layout-text paragraph--default paragraph-layout_text--default layout-text" id="">
+		<div class="container wysiwyg" data-aos="fade-up">
+			<div class="inner-wrapper">
+				
+															<h2 class="layout-text__title">        <span>Plaatsen is ons vak</span>
+  </h2>
+									
+									<div class="layout-text__text columns-1">
+									<p>Erik Claes plaatst al meer dan 35 jaar biljarts van elk type.</p>
+<blockquote><p>„Snookertafels plaatsen is mijn specialiteit. Ik heb de stiel geleerd van Engelsen en heb twee jaar snookers geplaatst voor Belgium Snooker, toen invoerder van BCE-snookertafels. Later ging ik mee snookers plaatsen voor de PTC-tornooien, met WSS World Snooker Services uit Bristol, dat alle tafels voor World Snooker plaatst. Het belangrijkste van een aankoop is de plaatsing, en er lopen er niet veel rond die die stiel meester zijn.”</p>
+</blockquote>
+<p>Sinds 2019 doet Christophe Danis van Biljartservice Danis de plaatsingen. Erik leidde hem zelf op.</p>
+
+	
+					</div>
+				
+							</div>
+		</div>
+		
+
+	</section>
+
+			
+	<section class="paragraph-id--728 paragraph space-top-md space-bottom-md bg--default paragraph--layout-gallery paragraph--default paragraph-layout_gallery--default layout-gallery" id="">
+		<div class="overflow-wrapper">
+			<div class="container container--medium" data-aos="fade-up">
+					
+	<div class="intro-text wysiwyg  intro-text--inline">
+					<div class="intro-text__text-wrapper">
+				
+															<h2 class="intro-text__title">        <span>Een snooker plaatsen</span>
+  </h2>
+									
+									<div class="intro-text__text">
+									<p>Een fullsize snooker van 12 ft weegt 1.250 kg. Zo wordt hij opgebouwd.</p>
+
+	
+					</div>
+							</div>
+		
+			</div>
+
+									<div class="layout-gallery__grid">
+						
+<div class="field field--entity-reference field-pg-media-unlimited">
+								<a class="fancybox" href="/espa/sites/hannibal/files/styles/width_2400/public/espa/erik-snooker-hiace-008.jpg.avif?itok=kIKzsy2P">
+				  <img loading="lazy" src="/espa/sites/hannibal/files/styles/gallery_paragraph_image_preview/public/espa/erik-snooker-hiace-008.jpg?h=52d3fcb6&amp;itok=YRRjAVpw" width="250" height="170" alt="Een snooker plaatsen" />
+
+
+
+			</a>
+										<a class="fancybox" href="/espa/sites/hannibal/files/styles/width_2400/public/espa/erik-snooker-hiace-011.jpg.avif?itok=GXp91GYi">
+				  <img loading="lazy" src="/espa/sites/hannibal/files/styles/gallery_paragraph_image_preview/public/espa/erik-snooker-hiace-011.jpg?h=44759c0b&amp;itok=kTymn53O" width="250" height="170" alt="Een snooker plaatsen" />
+
+
+
+			</a>
+										<a class="fancybox" href="/espa/sites/hannibal/files/styles/width_2400/public/espa/IMG_3121.jpg.avif?itok=FaHL3E08">
+				  <img loading="lazy" src="/espa/sites/hannibal/files/styles/gallery_paragraph_image_preview/public/espa/IMG_3121.jpg?h=69f2b9d0&amp;itok=rwyh6Ukf" width="250" height="170" alt="Een snooker plaatsen" />
+
+
+
+			</a>
+										<a class="fancybox" href="/espa/sites/hannibal/files/styles/width_2400/public/espa/IMG_3128.jpg.avif?itok=tt1NJrqa">
+				  <img loading="lazy" src="/espa/sites/hannibal/files/styles/gallery_paragraph_image_preview/public/espa/IMG_3128.jpg?h=69f2b9d0&amp;itok=MHXNGFG5" width="250" height="170" alt="Een snooker plaatsen" />
+
+
+
+			</a>
+										<a class="fancybox" href="/espa/sites/hannibal/files/styles/width_2400/public/espa/IMG_3132.jpg.avif?itok=Bizkx8HL">
+				  <img loading="lazy" src="/espa/sites/hannibal/files/styles/gallery_paragraph_image_preview/public/espa/IMG_3132.jpg?h=69f2b9d0&amp;itok=agzQNZg_" width="250" height="170" alt="Een snooker plaatsen" />
+
+
+
+			</a>
+										<a class="fancybox" href="/espa/sites/hannibal/files/styles/width_2400/public/espa/IMG_3137.jpg.avif?itok=MKAu0OO-">
+				  <img loading="lazy" src="/espa/sites/hannibal/files/styles/gallery_paragraph_image_preview/public/espa/IMG_3137.jpg?h=69f2b9d0&amp;itok=bpMBRusF" width="250" height="170" alt="Een snooker plaatsen" />
+
+
+
+			</a>
+			</div>
+
+					</div>
+							</div>
+		</div>
+
+		
+	</section>
+
+			
+	<section class="paragraph-id--729 paragraph space-top-md space-bottom-md bg--default paragraph--layout-gallery paragraph--default paragraph-layout_gallery--default layout-gallery" id="">
+		<div class="overflow-wrapper">
+			<div class="container container--medium" data-aos="fade-up">
+					
+	<div class="intro-text wysiwyg  intro-text--inline">
+					<div class="intro-text__text-wrapper">
+				
+															<h2 class="intro-text__title">        <span>Een moderne pooltafel plaatsen</span>
+  </h2>
+									
+									<div class="intro-text__text">
+									<p>Van leisteen tot laken: het plaatsen van een moderne pooltafel.</p>
+
+	
+					</div>
+							</div>
+		
+			</div>
+
+									<div class="layout-gallery__grid">
+						
+<div class="field field--entity-reference field-pg-media-unlimited">
+								<a class="fancybox" href="/espa/sites/hannibal/files/styles/width_2400/public/espa/kapaza-006.jpg.avif?itok=WTfmWYVo">
+				  <img loading="lazy" src="/espa/sites/hannibal/files/styles/gallery_paragraph_image_preview/public/espa/kapaza-006.jpg?h=52d3fcb6&amp;itok=rTtDQs3N" width="250" height="170" alt="Een moderne pooltafel plaatsen" />
+
+
+
+			</a>
+										<a class="fancybox" href="/espa/sites/hannibal/files/styles/width_2400/public/espa/kapaza-008.jpg.avif?itok=DeUjgTyO">
+				  <img loading="lazy" src="/espa/sites/hannibal/files/styles/gallery_paragraph_image_preview/public/espa/kapaza-008.jpg?h=52d3fcb6&amp;itok=wc5-ZPXK" width="250" height="170" alt="Een moderne pooltafel plaatsen" />
+
+
+
+			</a>
+										<a class="fancybox" href="/espa/sites/hannibal/files/styles/width_2400/public/espa/kapaza-009.jpg.avif?itok=R6VjZc1B">
+				  <img loading="lazy" src="/espa/sites/hannibal/files/styles/gallery_paragraph_image_preview/public/espa/kapaza-009.jpg?h=52d3fcb6&amp;itok=HnRwN_Db" width="250" height="170" alt="Een moderne pooltafel plaatsen" />
+
+
+
+			</a>
+										<a class="fancybox" href="/espa/sites/hannibal/files/styles/width_2400/public/espa/kapaza-011.jpg.avif?itok=etkEM3aM">
+				  <img loading="lazy" src="/espa/sites/hannibal/files/styles/gallery_paragraph_image_preview/public/espa/kapaza-011.jpg?h=52d3fcb6&amp;itok=LP2cVXOC" width="250" height="170" alt="Een moderne pooltafel plaatsen" />
+
+
+
+			</a>
+										<a class="fancybox" href="/espa/sites/hannibal/files/styles/width_2400/public/espa/kapaza-014.jpg.avif?itok=BlUmW9Yh">
+				  <img loading="lazy" src="/espa/sites/hannibal/files/styles/gallery_paragraph_image_preview/public/espa/kapaza-014.jpg?h=52d3fcb6&amp;itok=Sr0MVCPF" width="250" height="170" alt="Een moderne pooltafel plaatsen" />
+
+
+
+			</a>
+										<a class="fancybox" href="/espa/sites/hannibal/files/styles/width_2400/public/espa/kapaza-016.jpg.avif?itok=3XeHYbMQ">
+				  <img loading="lazy" src="/espa/sites/hannibal/files/styles/gallery_paragraph_image_preview/public/espa/kapaza-016.jpg?h=52d3fcb6&amp;itok=TvQKLNkV" width="250" height="170" alt="Een moderne pooltafel plaatsen" />
+
+
+
+			</a>
+			</div>
+
+					</div>
+							</div>
+		</div>
+
+		
+	</section>
+
+			
+	<section class="paragraph-id--730 paragraph space-top-md space-bottom-md paragraph--layout-cta paragraph--default paragraph-layout_cta--default layout-cta negative" id="">
+		<div class="container container--small" data-aos="fade-up">
+			<div class="layout-cta__row bg--dark">
+				<div class="layout-cta__col wysiwyg layout-cta__col--left">
+					
+																		<h2 class="layout-cta__title">        <span>Interesse of een vraag over een model?</span>
+  </h2>
+											
+											<div class="layout-cta__text">
+										<p>Kom langs in onze showroom in Roeselare of vraag vrijblijvend een prijsofferte aan. Erik helpt u graag verder.</p>
+
+	
+						</div>
+					
+											<div class="layout-cta__links group-links">
+							<a href="/espa/contact" class="button--primary-negative">Vraag een offerte</a><a href="tel:+32495222233" class="button--secondary-negative">Bel 0495 22 22 33</a>
+						</div>
+									</div>
+
+							</div>
+		</div>
+
+		
+
+	</section>
+
+	</div>
+
+</div>
+
+	
+</div>
+
+  </div>
+
+		</main>
+	</div>
+
+	
+<footer  class="region space-top-lg region--footer footer negative">
+	<div class="footer__top space-bottom-md">
+		<div class="container">
+			<div class="footer__wrapper">
+				<div class="footer__item footer__contact">
+					<div class="footer__logo">
+	<a href="/espa/" rel="home" class="site-logo" aria-label="ESPA Biljarts – Home">
+		<img src="/espa/themes/custom/hannitheme/logo-espa-word.svg" width="143" height="35" alt="" class="site-logo__image">
+	</a>
+</div>
+											
+<div id="block-company-information" class="block block--site-settings block--single-rendered-site-settings-block">
+	
+	
+
+<div class="site_setting_entity company-information wysiwyg">
+			<div class="company-information__description">
+			<p>
+				Biljartspeciaalzaak sinds 1989 in Roeselare. Uw specialist voor het plaatsen en onderhouden van nieuwe en tweedehandse biljarts, snooker- en pooltafels voor thuis, in de zaak en de horeca.
+			</p>
+		</div>
+	
+			<div class="company-information__location large">
+			<i class="icon-location-1"></i>
+			<p class="address" translate="no">
+        ESPA Biljarts BV <br>
+        Kruisboommolenstraat 7/2 <br>
+              Roeselare 8800  <br>
+    België
+</p>
+
+		</div>
+				<div class="company-information__email large">
+			<i class="icon-mail-1"></i>
+			<a href="mailto:info@espa-biljarts.be">info@espa-biljarts.be</a>
+		</div>
+				<div class="company-information__phone large">
+			<i class="icon-phone"></i>
+			<a href="tel:+32 495 22 22 33">+32 495 22 22 33</a>
+		</div>
+	
+	
+
+</div>
+
+	
+</div>
+
+																<div class="footer__socials">
+<div id="block-socials" class="block block--site-settings block--single-rendered-site-settings-block">
+	
+	
+<ul class="site_setting_entity socials">
+	
+			<li>
+			<a aria-label="facebook" target="_blank" href="https://www.facebook.com/espabiljarts/">
+				<i class="icon-facebook-1" aria-hidden="true"></i>
+			</a>
+		</li>
+	
+	
+	
+	
+	
+	
+</ul>
+
+
+
+	
+</div>
+</div>
+									</div>
+									<div class="footer__item footer__hours">
+						<h3 class="heading4">Openingsuren</h3>
+						<div class="wysiwyg"><p><strong>Maandag</strong> 16u – 19u<br><strong>Woensdag &amp; zaterdag</strong> 14u – 18u<br>Aankoop biljart: ook op afspraak op andere dagen.<br>Zondag &amp; feestdagen gesloten.</p>
+</div>
+					</div>
+								<div class="footer__item footer__menu">
+					<h3 class="heading4">Navigatie</h3>
+											
+<div id="block-main" class="block navigation block--menu block--system block--system-menu-blockmain menu--main">
+	
+	<nav role="navigation" class="navigation navbar-nav">
+					
+
+
+							<ul data-region="footer" class="menu" data-level="0">
+		
+								<li class="menu-item">
+				<div class="menu-item-header">
+					
+					<a href="/espa/te-koop" data-drupal-link-system-path="node/114">Aanbod</a>
+
+									</div>
+
+							
+
+							</li>
+								<li class="menu-item">
+				<div class="menu-item-header">
+					
+					<a href="/espa/tweedehands" data-drupal-link-system-path="node/122">Tweedehands</a>
+
+									</div>
+
+							
+
+							</li>
+								<li class="menu-item menu-item--active-trail">
+				<div class="menu-item-header">
+					
+					<a href="/espa/biljartkeus" data-drupal-link-system-path="node/123">Keus &amp; toebehoren</a>
+
+									</div>
+
+							
+
+							</li>
+								<li class="menu-item">
+				<div class="menu-item-header">
+					
+					<a href="/espa/onderhoud" data-drupal-link-system-path="node/125" class="is-active" aria-current="page">Diensten</a>
+
+									</div>
+
+							
+
+							</li>
+								<li class="menu-item">
+				<div class="menu-item-header">
+					
+					<a href="/espa/over-ons" data-drupal-link-system-path="node/127">Over ESPA</a>
+
+									</div>
+
+							
+
+							</li>
+								<li class="menu-item">
+				<div class="menu-item-header">
+					
+					<a href="/espa/contact" class="button--primary" data-drupal-link-system-path="node/16">Contact</a>
+
+									</div>
+
+							
+
+							</li>
+				</ul>
+	
+
+
+			</nav>
+	
+</div>
+
+									</div>
+			</div>
+		</div>
+	</div>
+
+			<div class="footer__middle space-bottom-sm">
+			<div class="container">
+				<div class="footer__speciaalzaak">
+					<h3 class="heading4">ESPA Biljartspeciaalzaak</h3>
+					<nav aria-labelledby="block-footer-speciaalzaak-menu" id="block-footer-speciaalzaak">
+            
+  <h2 class="visually-hidden" id="block-footer-speciaalzaak-menu">Speciaalzaak</h2>
+  
+
+        
+              <ul class="menu">
+                    <li class="menu-item">
+        <a href="/espa/speciaalzaak/biljartkeu" data-drupal-link-system-path="node/134">Biljartkeu</a>
+              </li>
+                <li class="menu-item">
+        <a href="/espa/speciaalzaak/biljarttafel" data-drupal-link-system-path="node/133">Biljarttafel</a>
+              </li>
+                <li class="menu-item">
+        <a href="/espa/speciaalzaak/biljartwinkel" data-drupal-link-system-path="node/132">Biljartwinkel</a>
+              </li>
+                <li class="menu-item">
+        <a href="/espa/speciaalzaak/keu-kopen" data-drupal-link-system-path="node/136">Keu kopen</a>
+              </li>
+                <li class="menu-item">
+        <a href="/espa/speciaalzaak/keuen" data-drupal-link-system-path="node/143">Keuen</a>
+              </li>
+                <li class="menu-item">
+        <a href="/espa/speciaalzaak/poolbiljarts" data-drupal-link-system-path="node/141">Poolbiljarts</a>
+              </li>
+                <li class="menu-item">
+        <a href="/espa/speciaalzaak/poolkeu" data-drupal-link-system-path="node/137">Poolkeu</a>
+              </li>
+                <li class="menu-item">
+        <a href="/espa/speciaalzaak/pooltafel-eettafel" data-drupal-link-system-path="node/131">Pooltafel eettafel</a>
+              </li>
+                <li class="menu-item">
+        <a href="/espa/speciaalzaak/pooltafels" data-drupal-link-system-path="node/144">Pooltafels</a>
+              </li>
+                <li class="menu-item">
+        <a href="/espa/speciaalzaak/snooker-keu" data-drupal-link-system-path="node/140">Snooker keu</a>
+              </li>
+                <li class="menu-item">
+        <a href="/espa/speciaalzaak/snookertafel" data-drupal-link-system-path="node/138">Snookertafel</a>
+              </li>
+                <li class="menu-item">
+        <a href="/espa/speciaalzaak/tweedehands-biljarttafel" data-drupal-link-system-path="node/130">Tweedehands Biljarttafel</a>
+              </li>
+                <li class="menu-item">
+        <a href="/espa/speciaalzaak/tweedehands-pooltafel" data-drupal-link-system-path="node/135">Tweedehands Pooltafel</a>
+              </li>
+                <li class="menu-item">
+        <a href="/espa/speciaalzaak/tweedehands-snookertafel" data-drupal-link-system-path="node/139">Tweedehands Snookertafel</a>
+              </li>
+                <li class="menu-item">
+        <a href="/espa/speciaalzaak/tweedehands-biljart" data-drupal-link-system-path="node/142">Tweedehands biljart</a>
+              </li>
+        </ul>
+  
+
+
+  </nav>
+
+				</div>
+			</div>
+		</div>
+	
+	<div class="footer__copyright">
+		<div class="container">
+			<div class="footer__wrapper">
+				<div class="footer__item">
+					©
+					2026
+					ESPA Biljarts
+				</div>
+				<div class="footer__item footer__policy">
+											
+<div id="block-policymenu" class="block navigation block--menu block--system block--system-menu-blockpolicy-menu menu--policy-menu">
+	
+	<nav role="navigation" class="navigation navbar-nav">
+					
+							<ul class="menu">
+			
+																					<li class="menu-item">
+							<a href="/espa/node/2" data-drupal-link-system-path="node/2">Privacy policy</a>
+													</li>
+																										<li class="menu-item">
+							<a href="/espa/node/3" data-drupal-link-system-path="node/3">Cookie policy</a>
+													</li>
+																											<li>
+								<button type="button" class="eu-cookie-withdraw-tab">
+									Privacy-instellingen
+								</button>
+							</li>
+																		</ul>
+			
+
+
+			</nav>
+	
+</div>
+
+									</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+</div>
+
+  </div>
+
+		
+		
+		<script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/espa\/","pathPrefix":"","currentPath":"node\/125","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"nl"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"eJyFk9FugzAMRX-INu_7GctJTMkwDnMSaezrF0YLrRS6F7DPvXYsxcFP_AaO6EkNHvE1DxqtJe2ogItxDFR_08wBxZFpQbCo1A0oEiwmMnt0cSkdHGZUvCnOQwIOVlEXo9QrpeGRH5atzGNGxqVOuEebkKkejpmSeU3v6kATmfXM53wdGGWBIH3UCXOI8o8M4KnHwvnZFyRrhEzfL7TOFksGl7FNm63u8g2ZSZdz5V3xQBpP8Luyk_lX3CyT6NcLvFETAvSF-VnaL7LVLAW5MYGS1IUjD6leICTKufIElqMbX-zRBeTUQM1R05LqPkBdKPG1YaPfw0DonZbJnlomDHIukpRN_OhjzPtqnnjWXu8dc-TglstKOsafxayf7ng1xmuZka8HuRaZi-WQBvLdVwlu5CCj2aMWqwsecred_vdGfgGKtprL","theme":"hannitheme","theme_token":null},"ajaxTrustedUrl":[],"ajaxLoader":{"markup":"\u003Cdiv class=\u0022ajax-throbber sk-circle\u0022\u003E\n              \u003Cdiv class=\u0022sk-circle-dot\u0022\u003E\u003C\/div\u003E\n              \u003Cdiv class=\u0022sk-circle-dot\u0022\u003E\u003C\/div\u003E\n              \u003Cdiv class=\u0022sk-circle-dot\u0022\u003E\u003C\/div\u003E\n              \u003Cdiv class=\u0022sk-circle-dot\u0022\u003E\u003C\/div\u003E\n              \u003Cdiv class=\u0022sk-circle-dot\u0022\u003E\u003C\/div\u003E\n              \u003Cdiv class=\u0022sk-circle-dot\u0022\u003E\u003C\/div\u003E\n              \u003Cdiv class=\u0022sk-circle-dot\u0022\u003E\u003C\/div\u003E\n              \u003Cdiv class=\u0022sk-circle-dot\u0022\u003E\u003C\/div\u003E\n              \u003Cdiv class=\u0022sk-circle-dot\u0022\u003E\u003C\/div\u003E\n              \u003Cdiv class=\u0022sk-circle-dot\u0022\u003E\u003C\/div\u003E\n              \u003Cdiv class=\u0022sk-circle-dot\u0022\u003E\u003C\/div\u003E\n              \u003Cdiv class=\u0022sk-circle-dot\u0022\u003E\u003C\/div\u003E\n            \u003C\/div\u003E","hideAjaxMessage":false,"alwaysFullscreen":true,"throbberPosition":"body"},"hanniDatalayer":{"pageLoad":{"event":"pageLoad","eventCategory":"Page","page":{"title":"Onderhoud \u0026 plaatsing","intern_path":"\/node\/125","route_name":"entity.node.canonical","language":"nl","url":"\/onderhoud","route_parameters":{"node":"125"},"entity":{"node":{"bundle":"page","id":"125"}}},"user":{"uid":0,"isAuthenticated":false}}},"lazy":{"lazysizes":{"lazyClass":"lazyload","loadedClass":"lazyloaded","loadingClass":"lazyloading","preloadClass":"lazypreload","errorClass":"lazyerror","autosizesClass":"lazyautosizes","srcAttr":"data-src","srcsetAttr":"data-srcset","sizesAttr":"data-sizes","minSize":40,"customMedia":[],"init":true,"expFactor":1.5,"hFac":0.8,"loadMode":2,"loadHidden":true,"ricTimeout":0,"throttleDelay":125,"plugins":[]},"placeholderSrc":"\/themes\/custom\/hannitheme\/assets\/loaders\/lazy.gif","preferNative":false,"minified":true,"libraryPath":"\/libraries\/lazysizes"},"mediaDirectoriesBrowser":{"siteDefaultLangcode":"nl","rememberSort":false,"rememberDirectory":false,"rememberSidebar":true,"rememberViewMode":true,"expandDirectoriesDefault":true,"rememberExpandedDirectories":false,"theme":"hannitheme","uploadLimits":{"maxFileSize":104857600,"maxPostSize":104857600,"maxFileUploads":20},"pageSize":100,"enableBulkActions":false,"enablePreviewDrawer":true,"enablePreviewDrawerInModal":true,"enableSelectionDrawer":true,"showExistingMediaInDrawer":true,"showDirectoryCounts":false,"combinedUpload":null,"directorySortMode":"alphabetical","experimentalFullscreen":false,"experimentalFab":false,"experimentalTopbarAdd":false,"enableAiAltText":false,"mediaTypeTranslationSettings":{"embed_video":{"enableTranslations":false,"enableAiTranslations":false},"file":{"enableTranslations":false,"enableAiTranslations":false},"icon":{"enableTranslations":false,"enableAiTranslations":false},"image":{"enableTranslations":false,"enableAiTranslations":false},"logo":{"enableTranslations":false,"enableAiTranslations":false},"video":{"enableTranslations":false,"enableAiTranslations":false}},"languages":[],"hasUploadMetadataSuggestions":false},"eu_cookie_compliance":{"cookie_policy_version":"2.0.0","popup_enabled":true,"popup_agreed_enabled":false,"popup_hide_agreed":false,"popup_clicking_confirmation":false,"popup_scrolling_confirmation":false,"popup_html_info":"\u003Cdiv role=\u0022alertdialog\u0022 aria-labelledby=\u0022popup-text\u0022  class=\u0022eu-cookie-compliance-banner eu-cookie-compliance-banner-info eu-cookie-compliance-banner--categories cookie-banner\u0022\u003E\n\t\u003Cdiv class=\u0022cookie-banner__content\u0022\u003E\n\t\t\u003Cdiv class=\u0022cookie-banner__content__message\u0022\u003E\n\t\t\t\u003Ch2\u003ECookie\u0026nbsp;policy\u003C\/h2\u003E\n\u003Cp\u003EWe gebruiken cookies op deze site om uw gebruikerservaring te verbeteren.\u003C\/p\u003E\n\n\t\t\u003C\/div\u003E\n\n\t\t\u003Cdiv class=\u0022cookie-banner__buttons\u0022\u003E\n\t\t\t\u003Cbutton type=\u0022button\u0022 class=\u0022disagree-button eu-cookie-compliance-disagree-button find-more-button eu-cookie-compliance-more-button\u0022\u003EToestemming intrekken\u003C\/button\u003E\n\n\t\t\t\t\t\t\t\u003Cinput type=\u0022checkbox\u0022 name=\u0022show-settings\u0022 id=\u0022show-cookie-settings\u0022 class=\u0022hidden\u0022\u003E\n\t\t\t\t\u003Clabel class=\u0022option\u0022 for=\u0022show-cookie-settings\u0022\u003E\n\t\t\t\t\tCookie-instellingen\n\t\t\t\t\u003C\/label\u003E\n\n\t\t\t\t\u003Cdiv class=\u0022cookie-settings js-cookie-settings cookie-banner-settings\u0022\u003E\n\t\t\t\t\t\u003Cdiv class=\u0022cookie-banner-settings__wrapper\u0022\u003E\n\t\t\t\t\t\t\u003Cdiv class=\u0022cookie-banner-settings__card\u0022\u003E\n\t\t\t\t\t\t\t\u003Clabel class=\u0022js-close-cookie-banner\u0022 for=\u0022show-cookie-settings\u0022 id=\u0022show-cookie-settings\u0022\u003ECLOSE\u003C\/label\u003E\n\t\t\t\t\t\t\t\u003Cdiv id=\u0022eu-cookie-compliance-categories\u0022 class=\u0022eu-cookie-compliance-categories\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022eu-cookie-compliance-category cookie-banner-settings__category\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022js-form-item form-item js-form-type-checkbox form-type__checkbox  form-disabled  \u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003Cinput type=\u0022checkbox\u0022 name=\u0022cookie-categories\u0022 id=\u0022cookie-category-necessary_cookies\u0022 class=\u0022form-checkbox\u0022 value=\u0022necessary_cookies\u0022  checked   disabled \u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003Clabel class=\u0022cbx\u0022 for=\u0022cookie-category-necessary_cookies\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Cspan\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Csvg width=\u002212px\u0022 height=\u002210px\u0022 viewbox=\u00220 0 12 10\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cpolyline points=\u00221.5 6 4.5 9 10.5 1\u0022\u003E\u003C\/polyline\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/svg\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/span\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003C\/label\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003Clabel for=\u0022cookie-category-necessary_cookies\u0022 class=\u0022option\u0022\u003ENoodzakelijke cookies\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Clabel class=\u0022info-icon\u0022 for=\u0022cookie-category-descriptionnecessary_cookies\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cspan\u003Ei\u003C\/span\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/label\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003C\/label\u003E\n\t\t\t\t\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022eu-cookie-compliance-category-description cookie-banner-settings__category__description\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Cinput type=\u0022checkbox\u0022 id=\u0022cookie-category-descriptionnecessary_cookies\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022info-text\u0022\u003EDeze cookies zijn onmisbaar voor het bezoeken van onze website en het gebruik van bepaalde onderdelen van de websites. Zo kunt u bijvoorbeeld navigeren tussen de verschillende onderdelen van de website of formulieren invullen. Als je deze cookies weigert, zullen bepaalde onderdelen van de website niet of niet optimaal werken.\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022eu-cookie-compliance-category cookie-banner-settings__category\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022js-form-item form-item js-form-type-checkbox form-type__checkbox  \u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003Cinput type=\u0022checkbox\u0022 name=\u0022cookie-categories\u0022 id=\u0022cookie-category-functional_cookies\u0022 class=\u0022form-checkbox\u0022 value=\u0022functional_cookies\u0022  \u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003Clabel class=\u0022cbx\u0022 for=\u0022cookie-category-functional_cookies\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Cspan\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Csvg width=\u002212px\u0022 height=\u002210px\u0022 viewbox=\u00220 0 12 10\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cpolyline points=\u00221.5 6 4.5 9 10.5 1\u0022\u003E\u003C\/polyline\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/svg\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/span\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003C\/label\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003Clabel for=\u0022cookie-category-functional_cookies\u0022 class=\u0022option\u0022\u003EFunctionele cookies\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Clabel class=\u0022info-icon\u0022 for=\u0022cookie-category-descriptionfunctional_cookies\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cspan\u003Ei\u003C\/span\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/label\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003C\/label\u003E\n\t\t\t\t\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022eu-cookie-compliance-category-description cookie-banner-settings__category__description\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Cinput type=\u0022checkbox\u0022 id=\u0022cookie-category-descriptionfunctional_cookies\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022info-text\u0022\u003EFunctionele cookies maken het voor onze websites en apps gemakkelijker om te werken, maken ze prettiger voor bezoekers en zorgen ervoor dat je een meer gepersonaliseerde browse-ervaring hebt.\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022eu-cookie-compliance-category cookie-banner-settings__category\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022js-form-item form-item js-form-type-checkbox form-type__checkbox  \u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003Cinput type=\u0022checkbox\u0022 name=\u0022cookie-categories\u0022 id=\u0022cookie-category-analytical_cookies\u0022 class=\u0022form-checkbox\u0022 value=\u0022analytical_cookies\u0022  \u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003Clabel class=\u0022cbx\u0022 for=\u0022cookie-category-analytical_cookies\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Cspan\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Csvg width=\u002212px\u0022 height=\u002210px\u0022 viewbox=\u00220 0 12 10\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cpolyline points=\u00221.5 6 4.5 9 10.5 1\u0022\u003E\u003C\/polyline\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/svg\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/span\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003C\/label\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003Clabel for=\u0022cookie-category-analytical_cookies\u0022 class=\u0022option\u0022\u003EAnalytische cookies\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Clabel class=\u0022info-icon\u0022 for=\u0022cookie-category-descriptionanalytical_cookies\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cspan\u003Ei\u003C\/span\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/label\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003C\/label\u003E\n\t\t\t\t\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022eu-cookie-compliance-category-description cookie-banner-settings__category__description\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Cinput type=\u0022checkbox\u0022 id=\u0022cookie-category-descriptionanalytical_cookies\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022info-text\u0022\u003EAnalytische cookies houden bij hoe gebruikers de website bereiken, interactie mee hebben en er zich op verplaatsen. Deze cookies laten ons weten welke functies op de website het beste werken en welke functies kunnen worden verbeterd.\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022eu-cookie-compliance-category cookie-banner-settings__category\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022js-form-item form-item js-form-type-checkbox form-type__checkbox  \u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003Cinput type=\u0022checkbox\u0022 name=\u0022cookie-categories\u0022 id=\u0022cookie-category-marketing_cookies\u0022 class=\u0022form-checkbox\u0022 value=\u0022marketing_cookies\u0022  \u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003Clabel class=\u0022cbx\u0022 for=\u0022cookie-category-marketing_cookies\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Cspan\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Csvg width=\u002212px\u0022 height=\u002210px\u0022 viewbox=\u00220 0 12 10\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cpolyline points=\u00221.5 6 4.5 9 10.5 1\u0022\u003E\u003C\/polyline\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/svg\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/span\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003C\/label\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003Clabel for=\u0022cookie-category-marketing_cookies\u0022 class=\u0022option\u0022\u003EMarketing cookies\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Clabel class=\u0022info-icon\u0022 for=\u0022cookie-category-descriptionmarketing_cookies\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cspan\u003Ei\u003C\/span\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/label\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003C\/label\u003E\n\t\t\t\t\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022eu-cookie-compliance-category-description cookie-banner-settings__category__description\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Cinput type=\u0022checkbox\u0022 id=\u0022cookie-category-descriptionmarketing_cookies\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022info-text\u0022\u003EDeze cookies gebruiken we om je surfgedrag op onze site in te zetten voor onze eigen marketing doeleinden. Zo kan je dankzij deze cookies advertenties zien voor onze producten en diensten op andere websites en apps.\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/div\u003E\n\n\t\t\t\t\t\t\t\u003Cdiv class=\u0022cookie-banner__buttons\u0022\u003E\n\t\t\t\t\t\t\t\t\u003Cbutton type=\u0022button\u0022 class=\u0022disagree-button eu-cookie-compliance-disagree-button find-more-button eu-cookie-compliance-more-button\u0022\u003EToestemming intrekken\u003C\/button\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022eu-cookie-compliance-categories-buttons\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\u003Cbutton type=\u0022button\u0022 class=\u0022eu-cookie-compliance-save-preferences-button preferences-button\u0022\u003EVoorkeuren opslaan\u003C\/button\u003E\n\t\t\t\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cbutton type=\u0022button\u0022 class=\u0022eu-cookie-compliance-agree-button agree-button eu-cookie-compliance-default-button\u0022\u003E\n\t\t\t\t\t\t\t\t\tIk accepteer alle cookies\n\t\t\t\t\t\t\t\t\u003C\/button\u003E\n\t\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\u003C\/div\u003E\n\n\n\t\t\t\n\t\t\t\u003Cbutton type=\u0022button\u0022 class=\u0022eu-cookie-compliance-agree-button agree-button eu-cookie-compliance-default-button\u0022\u003E\n\t\t\t\tIk accepteer alle cookies\n\t\t\t\u003C\/button\u003E\n\t\t\u003C\/div\u003E\n\n\t\u003C\/div\u003E\n\n\u003C\/div\u003E\n\n\n\t\u003Cbutton type=\u0022button\u0022 class=\u0022hidden eu-cookie-withdraw-tab\u0022\u003EPrivacy-instellingen\u003C\/button\u003E","use_mobile_message":false,"mobile_popup_html_info":"\u003Cdiv role=\u0022alertdialog\u0022 aria-labelledby=\u0022popup-text\u0022  class=\u0022eu-cookie-compliance-banner eu-cookie-compliance-banner-info eu-cookie-compliance-banner--categories cookie-banner\u0022\u003E\n\t\u003Cdiv class=\u0022cookie-banner__content\u0022\u003E\n\t\t\u003Cdiv class=\u0022cookie-banner__content__message\u0022\u003E\n\t\t\t\n\t\t\u003C\/div\u003E\n\n\t\t\u003Cdiv class=\u0022cookie-banner__buttons\u0022\u003E\n\t\t\t\u003Cbutton type=\u0022button\u0022 class=\u0022disagree-button eu-cookie-compliance-disagree-button find-more-button eu-cookie-compliance-more-button\u0022\u003EToestemming intrekken\u003C\/button\u003E\n\n\t\t\t\t\t\t\t\u003Cinput type=\u0022checkbox\u0022 name=\u0022show-settings\u0022 id=\u0022show-cookie-settings\u0022 class=\u0022hidden\u0022\u003E\n\t\t\t\t\u003Clabel class=\u0022option\u0022 for=\u0022show-cookie-settings\u0022\u003E\n\t\t\t\t\tCookie-instellingen\n\t\t\t\t\u003C\/label\u003E\n\n\t\t\t\t\u003Cdiv class=\u0022cookie-settings js-cookie-settings cookie-banner-settings\u0022\u003E\n\t\t\t\t\t\u003Cdiv class=\u0022cookie-banner-settings__wrapper\u0022\u003E\n\t\t\t\t\t\t\u003Cdiv class=\u0022cookie-banner-settings__card\u0022\u003E\n\t\t\t\t\t\t\t\u003Clabel class=\u0022js-close-cookie-banner\u0022 for=\u0022show-cookie-settings\u0022 id=\u0022show-cookie-settings\u0022\u003ECLOSE\u003C\/label\u003E\n\t\t\t\t\t\t\t\u003Cdiv id=\u0022eu-cookie-compliance-categories\u0022 class=\u0022eu-cookie-compliance-categories\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022eu-cookie-compliance-category cookie-banner-settings__category\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022js-form-item form-item js-form-type-checkbox form-type__checkbox  form-disabled  \u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003Cinput type=\u0022checkbox\u0022 name=\u0022cookie-categories\u0022 id=\u0022cookie-category-necessary_cookies\u0022 class=\u0022form-checkbox\u0022 value=\u0022necessary_cookies\u0022  checked   disabled \u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003Clabel class=\u0022cbx\u0022 for=\u0022cookie-category-necessary_cookies\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Cspan\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Csvg width=\u002212px\u0022 height=\u002210px\u0022 viewbox=\u00220 0 12 10\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cpolyline points=\u00221.5 6 4.5 9 10.5 1\u0022\u003E\u003C\/polyline\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/svg\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/span\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003C\/label\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003Clabel for=\u0022cookie-category-necessary_cookies\u0022 class=\u0022option\u0022\u003ENoodzakelijke cookies\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Clabel class=\u0022info-icon\u0022 for=\u0022cookie-category-descriptionnecessary_cookies\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cspan\u003Ei\u003C\/span\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/label\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003C\/label\u003E\n\t\t\t\t\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022eu-cookie-compliance-category-description cookie-banner-settings__category__description\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Cinput type=\u0022checkbox\u0022 id=\u0022cookie-category-descriptionnecessary_cookies\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022info-text\u0022\u003EDeze cookies zijn onmisbaar voor het bezoeken van onze website en het gebruik van bepaalde onderdelen van de websites. Zo kunt u bijvoorbeeld navigeren tussen de verschillende onderdelen van de website of formulieren invullen. Als je deze cookies weigert, zullen bepaalde onderdelen van de website niet of niet optimaal werken.\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022eu-cookie-compliance-category cookie-banner-settings__category\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022js-form-item form-item js-form-type-checkbox form-type__checkbox  \u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003Cinput type=\u0022checkbox\u0022 name=\u0022cookie-categories\u0022 id=\u0022cookie-category-functional_cookies\u0022 class=\u0022form-checkbox\u0022 value=\u0022functional_cookies\u0022  \u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003Clabel class=\u0022cbx\u0022 for=\u0022cookie-category-functional_cookies\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Cspan\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Csvg width=\u002212px\u0022 height=\u002210px\u0022 viewbox=\u00220 0 12 10\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cpolyline points=\u00221.5 6 4.5 9 10.5 1\u0022\u003E\u003C\/polyline\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/svg\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/span\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003C\/label\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003Clabel for=\u0022cookie-category-functional_cookies\u0022 class=\u0022option\u0022\u003EFunctionele cookies\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Clabel class=\u0022info-icon\u0022 for=\u0022cookie-category-descriptionfunctional_cookies\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cspan\u003Ei\u003C\/span\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/label\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003C\/label\u003E\n\t\t\t\t\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022eu-cookie-compliance-category-description cookie-banner-settings__category__description\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Cinput type=\u0022checkbox\u0022 id=\u0022cookie-category-descriptionfunctional_cookies\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022info-text\u0022\u003EFunctionele cookies maken het voor onze websites en apps gemakkelijker om te werken, maken ze prettiger voor bezoekers en zorgen ervoor dat je een meer gepersonaliseerde browse-ervaring hebt.\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022eu-cookie-compliance-category cookie-banner-settings__category\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022js-form-item form-item js-form-type-checkbox form-type__checkbox  \u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003Cinput type=\u0022checkbox\u0022 name=\u0022cookie-categories\u0022 id=\u0022cookie-category-analytical_cookies\u0022 class=\u0022form-checkbox\u0022 value=\u0022analytical_cookies\u0022  \u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003Clabel class=\u0022cbx\u0022 for=\u0022cookie-category-analytical_cookies\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Cspan\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Csvg width=\u002212px\u0022 height=\u002210px\u0022 viewbox=\u00220 0 12 10\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cpolyline points=\u00221.5 6 4.5 9 10.5 1\u0022\u003E\u003C\/polyline\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/svg\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/span\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003C\/label\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003Clabel for=\u0022cookie-category-analytical_cookies\u0022 class=\u0022option\u0022\u003EAnalytische cookies\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Clabel class=\u0022info-icon\u0022 for=\u0022cookie-category-descriptionanalytical_cookies\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cspan\u003Ei\u003C\/span\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/label\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003C\/label\u003E\n\t\t\t\t\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022eu-cookie-compliance-category-description cookie-banner-settings__category__description\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Cinput type=\u0022checkbox\u0022 id=\u0022cookie-category-descriptionanalytical_cookies\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022info-text\u0022\u003EAnalytische cookies houden bij hoe gebruikers de website bereiken, interactie mee hebben en er zich op verplaatsen. Deze cookies laten ons weten welke functies op de website het beste werken en welke functies kunnen worden verbeterd.\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022eu-cookie-compliance-category cookie-banner-settings__category\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022js-form-item form-item js-form-type-checkbox form-type__checkbox  \u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003Cinput type=\u0022checkbox\u0022 name=\u0022cookie-categories\u0022 id=\u0022cookie-category-marketing_cookies\u0022 class=\u0022form-checkbox\u0022 value=\u0022marketing_cookies\u0022  \u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003Clabel class=\u0022cbx\u0022 for=\u0022cookie-category-marketing_cookies\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Cspan\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Csvg width=\u002212px\u0022 height=\u002210px\u0022 viewbox=\u00220 0 12 10\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cpolyline points=\u00221.5 6 4.5 9 10.5 1\u0022\u003E\u003C\/polyline\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/svg\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/span\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003C\/label\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003Clabel for=\u0022cookie-category-marketing_cookies\u0022 class=\u0022option\u0022\u003EMarketing cookies\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Clabel class=\u0022info-icon\u0022 for=\u0022cookie-category-descriptionmarketing_cookies\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cspan\u003Ei\u003C\/span\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/label\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003C\/label\u003E\n\t\t\t\t\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022eu-cookie-compliance-category-description cookie-banner-settings__category__description\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Cinput type=\u0022checkbox\u0022 id=\u0022cookie-category-descriptionmarketing_cookies\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022info-text\u0022\u003EDeze cookies gebruiken we om je surfgedrag op onze site in te zetten voor onze eigen marketing doeleinden. Zo kan je dankzij deze cookies advertenties zien voor onze producten en diensten op andere websites en apps.\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003C\/div\u003E\n\n\t\t\t\t\t\t\t\u003Cdiv class=\u0022cookie-banner__buttons\u0022\u003E\n\t\t\t\t\t\t\t\t\u003Cbutton type=\u0022button\u0022 class=\u0022disagree-button eu-cookie-compliance-disagree-button find-more-button eu-cookie-compliance-more-button\u0022\u003EToestemming intrekken\u003C\/button\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cdiv class=\u0022eu-cookie-compliance-categories-buttons\u0022\u003E\n\t\t\t\t\t\t\t\t\t\t\u003Cbutton type=\u0022button\u0022 class=\u0022eu-cookie-compliance-save-preferences-button preferences-button\u0022\u003EVoorkeuren opslaan\u003C\/button\u003E\n\t\t\t\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\u003Cbutton type=\u0022button\u0022 class=\u0022eu-cookie-compliance-agree-button agree-button eu-cookie-compliance-default-button\u0022\u003E\n\t\t\t\t\t\t\t\t\tIk accepteer alle cookies\n\t\t\t\t\t\t\t\t\u003C\/button\u003E\n\t\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\t\u003C\/div\u003E\n\t\t\t\t\u003C\/div\u003E\n\n\n\t\t\t\n\t\t\t\u003Cbutton type=\u0022button\u0022 class=\u0022eu-cookie-compliance-agree-button agree-button eu-cookie-compliance-default-button\u0022\u003E\n\t\t\t\tIk accepteer alle cookies\n\t\t\t\u003C\/button\u003E\n\t\t\u003C\/div\u003E\n\n\t\u003C\/div\u003E\n\n\u003C\/div\u003E\n\n\n\t\u003Cbutton type=\u0022button\u0022 class=\u0022hidden eu-cookie-withdraw-tab\u0022\u003EPrivacy-instellingen\u003C\/button\u003E","mobile_breakpoint":768,"popup_html_agreed":false,"popup_use_bare_css":true,"popup_height":"auto","popup_width":"100%","popup_delay":1000,"popup_link":"\/espa\/","popup_link_new_window":true,"popup_position":false,"fixed_top_position":true,"popup_language":"nl","store_consent":false,"better_support_for_screen_readers":true,"cookie_name":"","reload_page":true,"domain":"","domain_all_sites":true,"popup_eu_only":false,"popup_eu_only_js":false,"cookie_lifetime":100,"cookie_session":0,"set_cookie_session_zero_on_disagree":1,"disagree_do_not_show_popup":true,"method":"categories","automatic_cookies_removal":true,"allowed_cookies":"functional_cookies:*","withdraw_markup":"\u003Cbutton type=\u0022button\u0022 class=\u0022eu-cookie-withdraw-tab\u0022\u003EPrivacy-instellingen\u003C\/button\u003E\n\u003Cdiv aria-labelledby=\u0022popup-text\u0022 class=\u0022eu-cookie-withdraw-banner\u0022\u003E\n  \u003Cdiv class=\u0022popup-content info eu-cookie-compliance-content\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022 class=\u0022eu-cookie-compliance-message\u0022 role=\u0022document\u0022\u003E\n      \u003Cp\u003EThis website uses cookies to enhance your experience on our website\u003C\/p\u003E\n\n    \u003C\/div\u003E\n    \u003Cdiv id=\u0022popup-buttons\u0022 class=\u0022eu-cookie-compliance-buttons\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022eu-cookie-withdraw-button \u0022\u003EToestemming intrekken\u003C\/button\u003E\n    \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E","withdraw_enabled":true,"reload_options":0,"reload_routes_list":"","withdraw_button_on_info_popup":true,"cookie_categories":["necessary_cookies","functional_cookies","analytical_cookies","marketing_cookies"],"cookie_categories_details":{"necessary_cookies":{"uuid":"a9e1a886-aa0c-44f6-8c6f-32d4b7b7840c","langcode":"nl","status":true,"dependencies":[],"id":"necessary_cookies","label":"Noodzakelijke cookies","description":"Deze cookies zijn onmisbaar voor het bezoeken van onze website en het gebruik van bepaalde onderdelen van de websites. Zo kunt u bijvoorbeeld navigeren tussen de verschillende onderdelen van de website of formulieren invullen. Als je deze cookies weigert, zullen bepaalde onderdelen van de website niet of niet optimaal werken.","checkbox_default_state":"required","weight":-9},"functional_cookies":{"uuid":"0b5af6df-8c83-4dc4-b208-a95eaa3ba74f","langcode":"nl","status":true,"dependencies":[],"id":"functional_cookies","label":"Functionele cookies","description":"Functionele cookies maken het voor onze websites en apps gemakkelijker om te werken, maken ze prettiger voor bezoekers en zorgen ervoor dat je een meer gepersonaliseerde browse-ervaring hebt.","checkbox_default_state":"unchecked","weight":-8},"analytical_cookies":{"uuid":"41a0df0f-7da2-4a1e-b5e1-14beb7a7cb2c","langcode":"nl","status":true,"dependencies":[],"id":"analytical_cookies","label":"Analytische cookies","description":"Analytische cookies houden bij hoe gebruikers de website bereiken, interactie mee hebben en er zich op verplaatsen. Deze cookies laten ons weten welke functies op de website het beste werken en welke functies kunnen worden verbeterd.","checkbox_default_state":"unchecked","weight":-7},"marketing_cookies":{"uuid":"19c7a5ca-f51e-444c-9040-778408639ac6","langcode":"nl","status":true,"dependencies":[],"id":"marketing_cookies","label":"Marketing cookies","description":"Deze cookies gebruiken we om je surfgedrag op onze site in te zetten voor onze eigen marketing doeleinden. Zo kan je dankzij deze cookies advertenties zien voor onze producten en diensten op andere websites en apps.","checkbox_default_state":"unchecked","weight":-6}},"enable_save_preferences_button":true,"cookie_value_disagreed":"0","cookie_value_agreed_show_thank_you":"1","cookie_value_agreed":"2","containing_element":"body","settings_tab_enabled":true,"olivero_primary_button_classes":"","olivero_secondary_button_classes":"","close_button_action":"close_banner","open_by_default":true,"modules_allow_popup":true,"hide_the_banner":false,"geoip_match":true,"unverified_scripts":["\/espa\/espa\/"]},"hannitemplates":[],"quicklink":{"admin_link_container_patterns":["#block-local-tasks-block a",".block-local-tasks-block a","#drupal-off-canvas a","#toolbar-administration a"],"ignore_admin_paths":true,"ignore_ajax_links":true,"ignore_file_ext":true,"total_request_limit":0,"concurrency_throttle_limit":0,"idle_wait_timeout":2000,"viewport_delay":0,"debug":false,"url_patterns_to_ignore":["user\/logout","#","\/admin","\/edit"]},"user":{"uid":0,"permissionsHash":"798b1b2b5dfb6b838c0b1d8b42f8a2b627444a5712929bb78b85cc96bf3d2f3d"}}</script>
+<script src="/espa/core/assets/vendor/jquery/jquery.min.js?v=4.0.0"></script>
+<script src="https://unpkg.com/quicklink@2.3.0/dist/quicklink.umd.js"></script>
+<script src="/espa/sites/hannibal/files/js/js_3_eF9cqlFxcfBth6MkoBbfw18sy8AlynD3FotPK45B8.js?scope=footer&amp;delta=2&amp;language=nl&amp;theme=hannitheme&amp;include=eJxtTtsOgyAM_SEyPokctJPOCqxiMvb1wxh1D7y059aT4oWPk4SR1OLGjxI0eU9qaHNDSjNTW0sWRhzI9kQTECN7rOQyFJMih9UJe4VWq_RUWsPJ78hxNqJAUNsTFzqMEmghu7f-8xZIW3ETREhrxwmkyQi-1e7DvDceZuE42wv1NMet5gdtF2zl"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+<script src="/espa/sites/hannibal/files/js/js_wSrAv0_1CVrdj6ydvnoCNeSoIZ2Kd06RX4fH1phXwi0.js?scope=footer&amp;delta=4&amp;language=nl&amp;theme=hannitheme&amp;include=eJxtTtsOgyAM_SEyPokctJPOCqxiMvb1wxh1D7y059aT4oWPk4SR1OLGjxI0eU9qaHNDSjNTW0sWRhzI9kQTECN7rOQyFJMih9UJe4VWq_RUWsPJ78hxNqJAUNsTFzqMEmghu7f-8xZIW3ETREhrxwmkyQi-1e7DvDceZuE42wv1NMet5gdtF2zl"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="/espa/sites/hannibal/files/js/js_7xBvxgkJ6UXEWTs3q9RH1fbSCCYAuDG99nHb35BGq_c.js?scope=footer&amp;delta=6&amp;language=nl&amp;theme=hannitheme&amp;include=eJxtTtsOgyAM_SEyPokctJPOCqxiMvb1wxh1D7y059aT4oWPk4SR1OLGjxI0eU9qaHNDSjNTW0sWRhzI9kQTECN7rOQyFJMih9UJe4VWq_RUWsPJ78hxNqJAUNsTFzqMEmghu7f-8xZIW3ETREhrxwmkyQi-1e7DvDceZuE42wv1NMet5gdtF2zl"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<script src="/espa/sites/hannibal/files/js/js_QW-oqNg0xslVZ-C6O0G7Hj3L2mHOKy5D314kzYseopU.js?scope=footer&amp;delta=8&amp;language=nl&amp;theme=hannitheme&amp;include=eJxtTtsOgyAM_SEyPokctJPOCqxiMvb1wxh1D7y059aT4oWPk4SR1OLGjxI0eU9qaHNDSjNTW0sWRhzI9kQTECN7rOQyFJMih9UJe4VWq_RUWsPJ78hxNqJAUNsTFzqMEmghu7f-8xZIW3ETREhrxwmkyQi-1e7DvDceZuE42wv1NMet5gdtF2zl"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+<script src="/espa/sites/hannibal/files/js/js_44uMcGK_K5tXsjtLZFl9E6iYPDgrCVGtPvouOG3IaGQ.js?scope=footer&amp;delta=10&amp;language=nl&amp;theme=hannitheme&amp;include=eJxtTtsOgyAM_SEyPokctJPOCqxiMvb1wxh1D7y059aT4oWPk4SR1OLGjxI0eU9qaHNDSjNTW0sWRhzI9kQTECN7rOQyFJMih9UJe4VWq_RUWsPJ78hxNqJAUNsTFzqMEmghu7f-8xZIW3ETREhrxwmkyQi-1e7DvDceZuE42wv1NMet5gdtF2zl"></script>
+
+
+	</body>
+</html>
